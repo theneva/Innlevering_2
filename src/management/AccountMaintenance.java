@@ -125,7 +125,7 @@ public final class AccountMaintenance {
 	
 		while (resultSet.next()) {
 			final String accountNumber = resultSet.getString("accountNumber");
-			final int balance = resultSet.getInt("balance");
+			final float balance = resultSet.getFloat("balance");
 			final float interestRate = resultSet.getFloat("interestRate");
 			
 			accounts.put(accountNumber, new Account(accountNumber, balance, interestRate));
@@ -134,14 +134,10 @@ public final class AccountMaintenance {
 		return accounts;
 	}
 
+	/*
+	 * Gets a single account based on account number.
+	 */
 	public static Account getAccount(String tableName, String accountNumber) {
-
-		// TODO: This makes no sense
-		if (!(tableName.equals("accounts"))) {
-			System.err.println("Wrong table.");
-			return null;
-		}
-
 		try {
 			
 			// Attempt finding the account in the database
@@ -149,7 +145,7 @@ public final class AccountMaintenance {
 			String sql = "SELECT * FROM " + tableName + " WHERE accountNumber = '" + accountNumber + "';";
 			ResultSet resultSet = statement.executeQuery(sql);
 			
-			int balance = resultSet.getInt("balance");
+			float balance = resultSet.getFloat("balance");
 			float interestRate = resultSet.getFloat("interestRate");
 			return new Account(accountNumber, balance, interestRate);	
 			

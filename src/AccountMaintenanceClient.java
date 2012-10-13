@@ -33,11 +33,12 @@ public class AccountMaintenanceClient {
 		sql = "SELECT * FROM accounts";
 		ResultSet resultSet = DBConnection.connection.createStatement().executeQuery(sql);
 		
+		System.out.println("Accounts after updateAccounts has been run for the first time:");
 		while (resultSet.next()) {
 			System.out.println(resultSet.getString("accountNumber") + ", " + resultSet.getFloat("balance") + ", " + resultSet.getFloat("interestRate"));
 		}
 		
-		System.out.println(); // line break lol
+		System.out.println(); // line break
 		
 		sql = "INSERT INTO accountUpdate () VALUES ( '11111111', 'b+', 1000 ), ( '22222222', 'b', 4000 ), ( '22222222', 'i+', 0.1 ), ( '33333333', 'i', 4.5 ), ( '44444444', '3000', 1.5 );";
 		DBConnection.connection.createStatement().executeUpdate(sql);
@@ -47,7 +48,7 @@ public class AccountMaintenanceClient {
 		sql = "SELECT * FROM accounts";
 		resultSet = DBConnection.connection.createStatement().executeQuery(sql);
 		
-
+		System.out.println("Accounts after updateAccounts has been run for the second time:");
 		while (resultSet.next()) {
 			System.out.println(resultSet.getString("accountNumber") + ", " + resultSet.getFloat("balance") + ", " + resultSet.getFloat("interestRate"));
 		}
