@@ -71,6 +71,7 @@ public final class Account {
 	}
 	
 	// toString
+	@Override
 	public String toString() {
 		return "Account number: " + this.getAccountNumber() + ", balance: " + this.getBalance() + ", interest rate: " + this.getInterestRate();
 	}
