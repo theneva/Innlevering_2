@@ -1,15 +1,12 @@
 package management;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.TreeMap;
-
-import java.sql.PreparedStatement;
 
 import db.DBConnection;
 
@@ -24,11 +21,8 @@ public final class AccountMaintenance {
 		// 1. get all info from tableName in a map
 		Map<String, Account> accounts = getAccounts(tableName);
 		
-		if (accounts.size() == 1) {
-			System.out.println("1 row has been fetched.");
-		} else {
-			System.out.println(accounts.size() + " rows have been fetched.");
-		}
+		// Feedback on how many rows were fetched.
+		System.out.println(accounts.size() == 1 ? "1 row has" : (accounts.size() + " rows have") + " been fetched.");
 		
 		// 2. get all info from tableUpdate
 		String sql = "SELECT * FROM " + tableUpdate + ";";
@@ -104,29 +98,6 @@ public final class AccountMaintenance {
 			}
 		}
 		
-//		// Delete existing data in table
-//		sql = "DELETE FROM " + tableName + ";";
-//		connection.createStatement().executeUpdate(sql);
-//		
-//		// Insert updated data back into the table
-//		sql = "INSERT INTO " + tableName + " () VALUES ( ?, ?, ? );";
-//		PreparedStatement preparedStatement = connection.prepareStatement(sql);
-//		
-//		Iterator<Entry<String, Account>> iterator = accounts.entrySet().iterator();
-//		while (iterator.hasNext()) {
-//			
-//			@SuppressWarnings("rawtypes")
-//			Map.Entry pairs = (Map.Entry) iterator.next();
-//			
-//			Account account = (Account) pairs.getValue();
-//			
-//			preparedStatement.setString(1, account.getAccountNumber());
-//			preparedStatement.setFloat(2, account.getBalance());
-//			preparedStatement.setFloat(3, account.getInterestRate());
-//			
-//			preparedStatement.executeUpdate();
-//		}
-		
 		// Delete data from tableUpdate
 		sql = "DELETE FROM " + tableUpdate + ";";
 		connection.createStatement().executeUpdate(sql);
@@ -137,7 +108,7 @@ public final class AccountMaintenance {
 	 */
 	public static Map<String, Account> getAccounts(String tableName) throws SQLException {
 		
-		String sql = "SELECT * FROM " + tableName + " ORDER BY accountNumber+0 ASC ;";
+		String sql = "SELECT * FROM " + tableName + " ORDER BY accountNumber ASC;";
 		ResultSet resultSet = DBConnection.getConnection().createStatement().executeQuery(sql);
 		
 		Map<String, Account> accounts = new TreeMap<String, Account>();
@@ -172,6 +143,5 @@ public final class AccountMaintenance {
 			e.printStackTrace();
 			return null;
 		}
-
 	}
 }

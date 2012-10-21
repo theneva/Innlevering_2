@@ -1,7 +1,6 @@
 package management;
 
 public final class Account {
-	// Should be final, but using the set method instead of assigning a value directly in the constructor makes this impossible.
 	private String accountNumber;
 	private float balance;
 	private float interestRate;
@@ -9,12 +8,6 @@ public final class Account {
 	/*
 	 * Constructors
 	 */
-	
-	// Default
-	public Account() {
-		this("00000000", 0, 0);
-	}
-	
 	public Account(String accountNumber, float balance, float interestRate) {
 		this.setAccountNumber(accountNumber);
 		this.setBalance(balance);
@@ -68,13 +61,5 @@ public final class Account {
 		
 		this.interestRate = interest;
 		return true;
-	}
-
-
-	
-	// toString
-	@Override
-	public String toString() {
-		return "Account number: " + this.getAccountNumber() + ", balance: " + this.getBalance() + ", interest rate: " + this.getInterestRate();
 	}
 }
