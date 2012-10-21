@@ -21,8 +21,6 @@ public final class DBConnection {
 		return connection;
 	}
 
-
-
 	public static boolean connect(String user, String password) {
 		try {
 			// Load the JDBC driver
