@@ -3,7 +3,7 @@ package management;
 public final class Account {
 	// Should be final, but using the set method instead of assigning a value directly in the constructor makes this impossible.
 	private String accountNumber;
-	private double balance;
+	private float balance;
 	private float interestRate;
 	
 	/*
@@ -15,7 +15,7 @@ public final class Account {
 		this("00000000", 0, 0);
 	}
 	
-	public Account(String accountNumber, double balance, float interestRate) {
+	public Account(String accountNumber, float balance, float interestRate) {
 		this.setAccountNumber(accountNumber);
 		this.setBalance(balance);
 		this.setInterestRate(interestRate);
@@ -24,28 +24,6 @@ public final class Account {
 	/*
 	 * Get/Set
 	 */
-	protected double getBalance() {
-		return this.balance;
-	}
-
-	protected boolean setBalance(double balance) {
-		if (this.balance < 0) return false;
-		
-		this.balance = balance;
-		return true;
-	}
-
-	protected float getInterestRate() {
-		return this.interestRate;
-	}
-
-	protected boolean setInterestRate(float interest) {
-		if (interest < 0) return false;
-		
-		this.interestRate = interest;
-		return true;
-	}
-
 	protected boolean setAccountNumber(String accountNumber) {
 		// Make sure the number is an actual number and above 0
 		try {
@@ -69,6 +47,30 @@ public final class Account {
 	protected String getAccountNumber() {
 		return this.accountNumber;
 	}
+	
+	protected float getBalance() {
+		return this.balance;
+	}
+
+	protected boolean setBalance(float balance) {
+		if (this.balance < 0) return false;
+		
+		this.balance = balance;
+		return true;
+	}
+
+	protected float getInterestRate() {
+		return this.interestRate;
+	}
+
+	protected boolean setInterestRate(float interest) {
+		if (interest < 0) return false;
+		
+		this.interestRate = interest;
+		return true;
+	}
+
+
 	
 	// toString
 	@Override
