@@ -1,5 +1,6 @@
 /**
  * @author Theneva
+ * @author Mads
  * @version 1.0
  * Due Date 2012.10.22
  */

@@ -1,5 +1,6 @@
 /**
  * @author Theneva
+ * @author Mads
  * @version 1.0
  * Due Date 2012.10.22
  */
@@ -44,7 +45,7 @@ public final class DBConnection {
 			String driverName = "com.mysql.jdbc.Driver";
 			Class.forName(driverName);
 
-			// Using my own database @ mysql.nith.no for simplicity.
+			// Using Martin's database @ mysql.nith.no for simplicity.
 			String serverName = "mysql.nith.no";
 			String database = "lehmar11";
 

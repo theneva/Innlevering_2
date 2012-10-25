@@ -1,5 +1,6 @@
 /**
  * @author Theneva
+ * @author Mads
  * @version 1.0
  * Due Date 2012.10.22
  */
@@ -28,7 +29,7 @@ public class AccountMaintenanceClient {
 		long startTime = System.currentTimeMillis();
 
 		try {
-			// Using my own database @ mysql.nith.no for simplicity
+			// Using Martin's database @ mysql.nith.no for simplicity
 			DBConnection.connect("lehmar11", "lehmar11");
 			Connection connection = DBConnection.getConnection();
 
